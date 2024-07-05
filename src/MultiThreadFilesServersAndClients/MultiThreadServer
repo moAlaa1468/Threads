@@ -1,0 +1,166 @@
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+import java.util.Scanner;
+
+public class MultiThreadServer {
+    //you need to create function to establish connection
+    // you will need to make a lot code her e uaAmer
+
+
+    public static String reply(String message) throws IOException {
+        switch (message) {
+            case "null":
+                return "None";
+            case "hi":
+            case "Welcome":
+            case "hello":
+            case "Hello":
+                return "Hello";
+            case "How are you today ":
+            case "How ar u today ":
+            case "How r u today ":
+            case "How are you  ":
+                return "I am fine thank you very much and You ";
+            case "date":
+            case "time":
+                return new Date().toString();
+            case "bye":
+            case "BY":
+            case "BYE":
+            case "good luck":
+            case "Good Luck ":
+            case "Good luck !":
+                return " Good Luck ";
+            default:
+                return "Sorry , I can't understand You ";
+        }
+
+    }
+
+    public static void establishSingleThreadConnection(ServerSocket serverSocket) {
+        try (
+                // from here you have a client so you need to repeat this code uaAmer
+                // you need to wait for single client or single device
+                Socket singleThreadSocket = serverSocket.accept();
+                //you need to make channels
+                OutputStream fromServer = singleThreadSocket.getOutputStream();
+                InputStream toServer = singleThreadSocket.getInputStream();
+                // You need to send and recieve data
+                Reader reader = new InputStreamReader(toServer);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                PrintWriter fromServerToClientPrinter = new PrintWriter(fromServer);
+
+                // You could use the Scanner uaAmer
+                Scanner scanner = new Scanner(System.in);
+        ) {
+            System.out.println("------------ Server is waiting for new client ----------- ! ");
+            // You need to use the While loop because this will repeated for every Client Input
+            while (true) {
+                String clientInput = bufferedReader.readLine();
+                System.out.println(clientInput);
+
+                String serverReponse = reply(clientInput);
+
+
+                //we need to send this message to the client
+                fromServerToClientPrinter.println(serverReponse);
+                System.out.print(" CLIENT  : ");
+                System.out.println(clientInput);
+                System.out.println(" SERVER  : " + serverReponse);
+
+            }
+
+        } catch (IOException ex) {
+            System.out.println("Error found from thread" + ex.getMessage());
+
+        }
+        System.out.println("----------------- Client Connection closed ! -----------------");
+    }
+
+    public static void establishMultiConnection() {
+        try (
+                // here you need to start the server uaAmer
+                ServerSocket serverSocket = new ServerSocket(7777);
+        ) {
+
+            System.out.println("server stated  : ");
+            // You need to do while loop here to recieve from more than one client
+            while (true) {
+                // here you need to make function for every thread or every client
+                establishSingleThreadConnection(serverSocket);
+            }
+        } catch (IOException ex) {
+            System.out.println("Server cannot start : " + ex.getMessage());
+        }
+    }
+
+
+    public static void establishOneThreadServerConnection() {
+        try (
+                /*
+                 * You will make the initialization step
+                 * */
+                ServerSocket serverSocket = new ServerSocket(7777);
+                Socket socket = serverSocket.accept(); // For waiting respond from a client
+                // establishing channels for getting streams from and to clients
+                OutputStream fromServer = socket.getOutputStream(); //outgoing data from server
+                InputStream toServer = socket.getInputStream();
+                // we need to use controllers
+                Reader r = new InputStreamReader(toServer);
+                BufferedReader bufferedReader = new BufferedReader(r);
+                // we need to write or send or print data to the client uaAlaa
+                PrintStream fromSeverToClientPrinter = new PrintStream(fromServer);
+
+                //we need to use Scanner to input some words
+                Scanner scanner = new Scanner(System.in);
+
+                //we need to make some resources for the files
+
+        ) {
+            /*
+             * Whole process could be put here uaAlaa This is simple task
+             * */
+
+            //[1- Input ]
+
+            //[2-Processing ]
+            while (true) {
+//                System.out.println("Please enter the message to be send to server :");
+//                String userInput = scanner.nextLine();
+//                if (userInput.toLowerCase().trim().equals("bye")) {
+//                    break;
+//                }
+                //we need to receive some data from the client
+                String clientInput = bufferedReader.readLine();
+                String message = reply(clientInput.trim().toString());
+                if (message.toLowerCase().equals("bye") || message == null) {
+                    break;
+                }
+
+                //we need to send this message to the client
+                fromSeverToClientPrinter.println(message);
+                System.out.print(" CLIENT  : ");
+                System.out.println(clientInput);
+                System.out.println(" SERVER  : " + message);
+            }
+
+            //[3- output ]
+//            fromSeverToClientPrinter.println();
+
+
+        } catch (IOException | NullPointerException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+//        You could call this function if you need to run single Thread application uaAmer or uaAlaa
+        establishMultiConnection();
+    }
+}
+
+

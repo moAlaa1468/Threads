@@ -1,0 +1,61 @@
+Mohamed Alaa first Connection .
+
+
+Moohaed Amer second Conenctiosn Thanks very much uaAmer ; Client /192.168.1.6: fsafdas
+Client /192.168.1.6: fdsafsd
+Client /192.168.1.6: first connection
+Client /192.168.1.6: second connection
+Client /192.168.1.6: mohamed Amer First Thread
+Client /192.168.1.6: What about this uaAmer 
+Client /192.168.1.6: Client One : second Thread
+Client /192.168.1.6: first Thread
+Client /192.168.1.6: Second Thread
+Client /192.168.1.6: fdsf
+Client /192.168.1.6: Waht 
+Client /192.168.1.6: first thread
+Client /192.168.1.6: fist thred  measdfadsf
+Client /192.168.1.6: seconc so
+Client /192.168.1.6: fkldjsadsf
+Client /192.168.1.6: kfsdjla;sd
+Client /192.168.1.6: fist
+Client /192.168.1.6: mohaemd
+Client /192.168.1.6: this is the client side
+Client /192.168.1.6: CLIETN CLIETN
+Client /192.168.1.6: WHERE RIS THE LOCK 
+Client /192.168.1.6: ABTO
+Client /192.168.1.6: mohamed  Alaa amer 
+Client /192.168.1.6: fsffsafasdf
+Client /192.168.1.6: fdsafas
+Client /192.168.1.6: fksjdaf;
+Client /192.168.1.6: Mohamed Alaa amer is her
+Client /192.168.1.6: where is the coming connection uamer 
+Client /192.168.1.6: you are so good 
+Client /192.168.1.6: This is the seocnd sone
+Client /192.168.1.6: This is the just hte third one uaAmer 
+Client /192.168.1.6: Thrids
+Client /192.168.1.6: econd
+Client /192.168.1.6: Thired
+Client /192.168.1.6: What is the coking sections'
+Client /192.168.1.6: Mohamed Amaer 
+Client /192.168.1.6: fsdfa
+Client /127.0.0.1: mohamed Alaaa Amer first chat 
+Client /127.0.0.1: What about the coming connection
+Client /127.0.0.1: This is an error during receiving messages from the server
+Client /127.0.0.1: Mohamed Alaa amer is ehr 
+Client /127.0.0.1: Client One is her 
+Client /127.0.0.1: Client Two is here
+Client /127.0.0.1: 
+Client /127.0.0.1: But here which cliertn will recieve the messag
+Client /127.0.0.1: kfjsd;fa
+Client /127.0.0.1: fadsfs
+Client /127.0.0.1: jhasl;df
+Client /127.0.0.1: first connecton
+Client /127.0.0.1: connecton
+Client /127.0.0.1: second
+Client /127.0.0.1: 
+Client /127.0.0.1: 
+Client /127.0.0.1: first
+Client /127.0.0.1: connection
+Client /127.0.0.1: second connection'
+Client /127.0.0.1: sERVER tWO 
+Client /127.0.0.1: FISRT CONNECTION
