@@ -17,16 +17,16 @@ public class ChatClient {
             System.out.println("Connected to chat server");
 
             // Thread to read messages from the server
-//            new Thread(() -> {
-//                try {
-//                    String serverMessage;
-//                    while ((serverMessage = in.readLine()) != null) {
-//                        System.out.println(serverMessage);
-//                    }
-//                } catch (IOException e) {
-//                    System.err.println("Error reading from server: " + e.getMessage());
-//                }
-//            }).start();
+            new Thread(() -> {
+                try {
+                    String serverMessage;
+                    while ((serverMessage = in.readLine()) != null) {
+                        System.out.println(serverMessage);
+                    }
+                } catch (IOException e) {
+                    System.err.println("Error reading from server: " + e.getMessage());
+                }
+            }).start();
 
             // Main thread to send messages to the server
             while (true) {
