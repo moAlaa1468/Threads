@@ -2,17 +2,16 @@ package database.DB.repo;
 
 import database.DB.entity.Category;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
-* If you have 12 table in the database
-* you need 12 DTO | BOJO | DTO , 12 class and single ConnectionManager
-*
-* */
+----------------- Repo | Repository | repositories for all Classes in java --------------
+ * If you have 12 table in the database
+ * you need 12 DTO | BOJO | DTO , 12 class and single ConnectionManager
+ *
+ * */
 
 
 // Category DTO data transfer object | DAO DataAccessObject
@@ -26,7 +25,6 @@ public class CategoryRepo {
      *
      * */
 
-
     // This will be for the class ==> and you need to make this for every table
     ConnectionManager connectionManager = new ConnectionManager();
 
@@ -38,11 +36,19 @@ public class CategoryRepo {
                 Connection connection = connectionManager.connect();
                 Statement statement = connection.createStatement();
         ) {
-            // You need to put all you queries here uaAmer
-            //for insertCategory
+            String query = "INSERT INTO categories (name, description) VALUES ('" +
+                    category.getName() + "', '" + category.getDescription() + "');";
+            System.out.println("Executing query: " + query);
+
+            int rowsAffected = statement.executeUpdate(query);
+            if (rowsAffected == 1) {
+                System.out.println("one row affected ");
+            } else {
+                System.out.println("No Rows affected");
+            }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("We cannot insert you row to the database : " + e.getMessage());
         }
 
 
@@ -78,18 +84,66 @@ public class CategoryRepo {
         }
     }
 
-    public void select() {
+
+    public Category select(String id) {
+        Category currentCategory = new Category();
         try (
                 Connection connection = connectionManager.connect();
                 Statement statement = connection.createStatement();
         ) {
             // You need to put all you queries here uaAmer
             //for insertCategory
+            //2. prepare the query
+            String query = "SELECT * FROM CATEGORIES WHERE id = " + id + ";";
+            //3.execute the query
+            ResultSet result = statement.executeQuery(query);
+            //4. fetch result
+
+            if (result.next() == true) {
+                currentCategory.setId(result.getInt("id"));
+                currentCategory.setName(result.getString("name"));
+                currentCategory.setName(result.getString("description"));
+                return currentCategory;
+            } else {
+                return null;
+            }
+            //5.close connection
+            // Try with resource will close this connection uaAlaa
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+
+    public List<Category> selectAll() {
+        List<Category> categories = new ArrayList<Category>();
+        try (
+                Connection connection = connectionManager.connect();
+                Statement statement = connection.createStatement();
+        ) {
+            // You need to put all you queries here uaAmer
+            //for insertCategory
+            //2. prepare the query
+            String query = "SELECT * FROM CATEGORIES ";
+            //3.execute the query
+            ResultSet result = statement.executeQuery(query);
+            //4. fetch result
+
+            while (result.next() == true) {
+                Category currentCategory = new Category(); // You need to make Object to fill fields
+                currentCategory.setId(result.getInt("id"));
+                currentCategory.setName(result.getString("name"));
+                currentCategory.setName(result.getString("description"));
+                categories.add(currentCategory);
+            }
+            //5.close connection
+            // Try with resource will close this connection uaAlaa
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return categories;
     }
 
     public void delete(int id) {
@@ -106,4 +160,16 @@ public class CategoryRepo {
 
     }
 
+}
+
+class Test {
+    public static void main(String[] args) {
+
+        Category category = new Category();
+        category.setName("Gamal");
+        category.setDescription("he is a friend ");
+        CategoryRepo categoryRepo = new CategoryRepo();
+        categoryRepo.insert(category);
+
+    }
 }

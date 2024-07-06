@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Threads:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Threads_jar</output-path>
+    <root id="archive" name="Threads.jar">
+      <element id="module-output" name="Threads" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

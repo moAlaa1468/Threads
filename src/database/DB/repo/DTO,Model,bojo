@@ -1,0 +1,12 @@
+/*
+----------------- Repo | Repository | repositories for all Classes in java --------------
+ * If you have 12 table in the database
+ * you need 12 DTO | BOJO | DTO , 12 class and single ConnectionManager
+ *
+ * */
+
+
+// Category DTO data transfer object | DAO DataAccessObject
+// via this class you could access the table in database
+// DAO data access Object
+// Model ==> Repo used to access data in database

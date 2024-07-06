@@ -18,11 +18,13 @@ public class ConnectionManager {
         // You must not use Try with resource here uaAmer
         // because you need to return the connection Not close it before returning the connection
         try {
-            Class.forName("com.mysql.jdbc.Driver"); // For making sure that the class is in libraries
+            Class.forName("com.mysql.cj.jdbc.Driver"); // For making sure that the class is in libraries
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             return connection;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             System.out.println("WE failed to open connection to our database Thanks very much : " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("This is an error loading Driver manager");
         }
 
         // This is used to make connection
